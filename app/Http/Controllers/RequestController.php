@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\Requests\GetPagedRequestsAction;
 use App\Http\Sort\RequestSort;
+use App\Models\Request;
 use Illuminate\View\View;
 
 /**
@@ -24,6 +25,19 @@ class RequestController extends Controller
 
         return view('requests.index')->with([
             'requests' => $requests,
+        ]);
+    }
+
+    /**
+     * Детальная страница заявки
+     *
+     * @param Request $request
+     * @return View
+     */
+    public function show(Request $request): View
+    {
+        return view('requests.show')->with([
+            'request' => $request,
         ]);
     }
 }

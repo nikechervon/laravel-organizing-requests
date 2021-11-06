@@ -28,7 +28,7 @@
             @foreach($requests as $request)
                 <tr>
                     <th scope="row">{{ $request->id }}</th>
-                    <td>{{ $request->title }}</td>
+                    <td><a href="/requests/{{ $request->id }}">{{ $request->title }}</a></td>
                     <td>{{ $request->created_at->format('Y-m-d') }}</td>
                     <td>{{ $request->completion_at }}</td>
                     <td>{{ $request->status->name }}</td>

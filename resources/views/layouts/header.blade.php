@@ -1,1 +1,1 @@
-<?php
+@include('layouts.nav')

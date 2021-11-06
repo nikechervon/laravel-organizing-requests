@@ -9,3 +9,6 @@ Route::get('/', [HomeController::class, 'index']);
 
 /** Список заявок */
 Route::get('/requests', [RequestController::class, 'index']);
+
+/** Детальная страница заявки */
+Route::get('/requests/{request}', [RequestController::class, 'show']);
