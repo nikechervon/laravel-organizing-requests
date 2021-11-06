@@ -13,7 +13,7 @@
 
 @include('layouts.header')
 
-<div class="container" style="width: 1000px; margin-top: 100px">
+<div class="container" style="width: 1200px; margin-top: 100px; margin-bottom: 100px">
     @yield('content')
 </div>
 

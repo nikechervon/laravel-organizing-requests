@@ -16,5 +16,11 @@ Route::get('/requests/new', [RequestController::class, 'create']);
 /** Создание заявки */
 Route::post('/requests', [RequestController::class, 'store']);
 
+/** Страница редактирования заявки */
+Route::get('/requests/{request}/edit', [RequestController::class, 'edit']);
+
+/** Обновление заявки */
+Route::patch('/requests/{request}', [RequestController::class, 'update']);
+
 /** Детальная страница заявки */
 Route::get('/requests/{request}', [RequestController::class, 'show']);

@@ -1,6 +1,16 @@
 @extends('layouts.master', ['title' => 'Детальная страница'])
 
 @section('content')
+    <h1>Просмотр заявки (<a href="/requests/{{ $request->id }}/edit">Редактировать</a>)</h1>
+    <hr>
+
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            <p>{{ session()->get('success') }}</p>
+        </div>
+        <hr>
+    @endif
+
     <div class="mb-3 row">
         <label for="staticEmail" class="col-sm-3 col-form-label" style="font-size: 20px">ID</label>
         <div class="col-sm-9">
@@ -15,6 +25,12 @@
             <p class="form-control-plaintext" id="staticEmail">
                 {{ $request->title }}
             </p>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="inputPassword" class="col-sm-3 col-form-label" style="font-size: 20px">Изображение</label>
+        <div class="col-sm-9">
+            <img src="{{ $imageURL }}" alt="image" width="200">
         </div>
     </div>
     <div class="mb-3 row">

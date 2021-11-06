@@ -24,9 +24,11 @@ class CreateRequestAction extends AbstractAction
      */
     public static function run(ApplicationCreateRequest $applicationCreateRequest): Request
     {
+        // Создание заявки
         $data = self::getRequestData($applicationCreateRequest);
         $request = CreateRequestTask::run($data);
 
+        // Добавление изображения
         $request->addMediaFromRequest('image')
             ->toMediaCollection(MediaCollections::REQUESTS_IMAGES);
 

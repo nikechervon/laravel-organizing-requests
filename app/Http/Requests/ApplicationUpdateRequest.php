@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Rules\FurtherToday;
 
-class ApplicationCreateRequest extends AbstractApplicationRequest
+class ApplicationUpdateRequest extends AbstractApplicationRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class ApplicationCreateRequest extends AbstractApplicationRequest
     {
         return [
             'title' => 'required|string|max:64',
-            'image' => 'required|image|max:5000',
+            'image' => 'image|max:5000',
             'content' => 'required|string',
             'date' => ['required', 'date', new FurtherToday],
             'status' => 'required|exists:statuses,id',

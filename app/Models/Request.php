@@ -22,7 +22,7 @@ class Request extends Model implements HasMedia
     /**
      * @return void
      */
-    public function registerAllMediaConversions(): void
+    public function registerMediaCollections(): void
     {
         $this->addMediaCollection(MediaCollections::REQUESTS_IMAGES)
             ->singleFile();
