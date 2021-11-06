@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Requests\CreateRequestAction;
 use App\Actions\Requests\GetPagedRequestsAction;
+use App\Actions\Statuses\GetStatusesAction;
+use App\Http\Requests\ApplicationCreateRequest;
 use App\Http\Sort\RequestSort;
 use App\Models\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 /**
  * @controller RequestController
@@ -39,5 +45,33 @@ class RequestController extends Controller
         return view('requests.show')->with([
             'request' => $request,
         ]);
+    }
+
+    /**
+     * Страница создания новой заявки
+     *
+     * @return View
+     */
+    public function create(): View
+    {
+        $statuses = GetStatusesAction::run();
+        return view('requests.create', [
+            'statuses' => $statuses,
+        ]);
+    }
+
+    /**
+     * Создание заявки
+     *
+     * @param ApplicationCreateRequest $request
+     * @return RedirectResponse
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
+     */
+    public function store(ApplicationCreateRequest $request): RedirectResponse
+    {
+        CreateRequestAction::run($request);
+        session()->flash('success', 'Заявка успешно создана!');
+        return back();
     }
 }
