@@ -15,6 +15,7 @@ class RequestResource extends JsonResource
     public function toArray($request): array
     {
         return [
+            'id' => $this->id,
             'title' => $this->title,
             'image' => $this->getFirstMediaUrl(MediaCollections::REQUESTS_IMAGES),
             'content' => $this->content,

@@ -8,3 +8,9 @@ Route::get('/requests', [RequestController::class, 'index']);
 
 /** Подробный просмотр заявки */
 Route::get('/requests/{request}', [RequestController::class, 'show']);
+
+/** Создание заявки */
+Route::post('/requests', [RequestController::class, 'store']);
+
+/** Обновление заявки */
+Route::patch('/requests/{request}', [RequestController::class, 'update']);
