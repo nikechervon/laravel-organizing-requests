@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\WEB;
+
 use App\Models\Request;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileCannotBeAdded;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;

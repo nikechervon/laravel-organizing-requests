@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\WEB;
+namespace Tests\API;
 
 use App\Models\Request;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileCannotBeAdded;
@@ -31,22 +31,22 @@ class GetDetailRequestTest extends TestCase
     }
 
     /**
-     * @test Проверка на успешное открытие подробной страницы заявки
+     * @test Проверка на успешное получение заявки
      */
-    public function test_successful_opening_page()
+    public function test_successful_getting_request()
     {
-        $uri = "/requests/{$this->request->id}";
-        $response = $this->get($uri);
+        $uri = "/api/requests/{$this->request->id}";
+        $response = $this->getJson($uri);
         $response->assertStatus(200);
     }
 
     /**
-     * @test Проверка на открытие подробной страницы несуществующей заявки
+     * @test Проверка на получение несуществующей заявки
      */
     public function test_wrong_getting_not_founded_request()
     {
-        $id = $this->getNotFoundedID();
-        $response = $this->get("/requests/$id");
+        $uri = "/api/requests/{$this->getNotFoundedID()}";
+        $response = $this->getJson($uri);
         $response->assertStatus(404);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\WEB;
+
 use Tests\TestCase;
 
 class GetRequestsTest extends TestCase

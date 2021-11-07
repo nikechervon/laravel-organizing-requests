@@ -8,8 +8,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class RequestsRepository
 {
-    private const PER_PAGE = 12;
-
     /**
      * Получить список заявок
      *
@@ -18,6 +16,6 @@ class RequestsRepository
      */
     public function getPaged(RequestSort $sort): LengthAwarePaginator
     {
-        return Request::sort($sort)->paginate(self::PER_PAGE);
+        return Request::sort($sort)->paginate(config('pagination.limit'));
     }
 }
