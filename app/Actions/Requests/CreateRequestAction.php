@@ -17,15 +17,15 @@ use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 class CreateRequestAction extends AbstractAction
 {
     /**
-     * @param ApplicationCreateRequest $applicationCreateRequest
+     * @param ApplicationCreateRequest $createRequest
      * @return Request
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
      */
-    public static function run(ApplicationCreateRequest $applicationCreateRequest): Request
+    public static function run(ApplicationCreateRequest $createRequest): Request
     {
         // Создание заявки
-        $data = self::getRequestData($applicationCreateRequest);
+        $data = self::getRequestData($createRequest);
         $request = CreateRequestTask::run($data);
 
         // Добавление изображения
@@ -36,16 +36,16 @@ class CreateRequestAction extends AbstractAction
     }
 
     /**
-     * @param ApplicationCreateRequest $applicationCreateRequest
+     * @param ApplicationCreateRequest $createRequest
      * @return array
      */
-    private static function getRequestData(ApplicationCreateRequest $applicationCreateRequest): array
+    private static function getRequestData(ApplicationCreateRequest $createRequest): array
     {
-        return [
-            'title' => $applicationCreateRequest->get('title'),
-            'content' => $applicationCreateRequest->get('content'),
-            'completion_at' => $applicationCreateRequest->get('date'),
-            'status_id' => $applicationCreateRequest->get('status'),
-        ];
+        return $createRequest->only([
+            'title',
+            'content',
+            'completion_at',
+            'status_id'
+        ]);
     }
 }

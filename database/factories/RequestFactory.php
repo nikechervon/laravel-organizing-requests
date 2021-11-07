@@ -19,7 +19,7 @@ class RequestFactory extends Factory
             'title' => $this->faker->sentence(5),
             'content' => $this->faker->text(300),
             'status_id' => $this->getStatus()->id,
-            'completion_at' => now()->addDays(rand(1, 50)),
+            'completion_at' => now()->addDays(rand(1, 50))->format('Y-m-d'),
         ];
     }
 

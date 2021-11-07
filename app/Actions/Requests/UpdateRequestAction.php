@@ -43,11 +43,11 @@ class UpdateRequestAction extends AbstractAction
      */
     private static function getRequestData(ApplicationUpdateRequest $updateRequest): array
     {
-        return [
-            'title' => $updateRequest->get('title'),
-            'content' => $updateRequest->get('content'),
-            'completion_at' => $updateRequest->get('date'),
-            'status_id' => $updateRequest->get('status'),
-        ];
+        return $updateRequest->only([
+            'title',
+            'content',
+            'completion_at',
+            'status_id'
+        ]);
     }
 }

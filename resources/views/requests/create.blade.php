@@ -35,13 +35,13 @@
         <div class="mb-3 row">
             <label for="date" class="col-sm-2 col-form-label">Дата завершения</label>
             <div class="col-sm-10">
-                <input type="date" name="date" class="form-control" id="date" value="{{ old('date') }}">
+                <input type="date" name="completion_at" class="form-control" id="date" value="{{ old('completion_at') }}">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="status" class="col-sm-2 col-form-label">Статус</label>
             <div class="col-sm-10">
-                <select class="form-control" name="status" id="status">
+                <select class="form-control" name="status_id" id="status">
                     @foreach($statuses as $status)
                         <option value="{{ $status->id }}">{{ $status->name }}</option>
                     @endforeach

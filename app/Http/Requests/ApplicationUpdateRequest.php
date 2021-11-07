@@ -28,8 +28,8 @@ class ApplicationUpdateRequest extends FormRequest
             'title' => 'required|string|max:64',
             'image' => 'image|max:5000',
             'content' => 'required|string',
-            'date' => ['required', 'date', new FurtherToday],
-            'status' => 'required|exists:statuses,id',
+            'completion_at' => ['required', 'date', new FurtherToday],
+            'status_id' => 'required|exists:statuses,id',
         ];
     }
 }

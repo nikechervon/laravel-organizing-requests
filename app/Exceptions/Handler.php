@@ -57,6 +57,6 @@ class Handler extends ExceptionHandler
             $response['errors'][] = ['field' => $field, 'message' => $message[0]];
         }
 
-        throw new HttpResponseException(response()->json($response));
+        throw new HttpResponseException(response()->json($response, 422));
     }
 }
