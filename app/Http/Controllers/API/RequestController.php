@@ -6,6 +6,7 @@ use App\Actions\Requests\GetPagedRequestsAction;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RequestResource;
 use App\Http\Sort\RequestSort;
+use App\Models\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 /**
@@ -24,5 +25,16 @@ class RequestController extends Controller
     {
         $requests = GetPagedRequestsAction::run($sort);
         return RequestResource::collection($requests);
+    }
+
+    /**
+     * Получение заявки
+     *
+     * @param Request $request
+     * @return RequestResource
+     */
+    public function show(Request $request): RequestResource
+    {
+        return new RequestResource($request);
     }
 }
