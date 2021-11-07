@@ -1,18 +1,26 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/** Главная страница */
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/** Список заявок */
+Route::get('/requests', [RequestController::class, 'index']);
+
+/** Страница создания заявки */
+Route::get('/requests/new', [RequestController::class, 'create']);
+
+/** Создание заявки */
+Route::post('/requests', [RequestController::class, 'store']);
+
+/** Страница редактирования заявки */
+Route::get('/requests/{request}/edit', [RequestController::class, 'edit']);
+
+/** Обновление заявки */
+Route::patch('/requests/{request}', [RequestController::class, 'update']);
+
+/** Детальная страница заявки */
+Route::get('/requests/{request}', [RequestController::class, 'show']);
