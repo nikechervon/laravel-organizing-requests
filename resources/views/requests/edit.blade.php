@@ -1,4 +1,4 @@
-@extends('layouts.master', ['title' => 'Детальная страница'])
+@extends('layouts.master', ['title' => 'Редактирование заявки'])
 
 @section('content')
 
